@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style>
+.whole{
+		width: 1800px;
+		min-width: 1800px;
+		margin: 0 auto;
+}
+
+*{
+	padding:0;
+	margin: 0px auto;
+}
+    #container {
+    	position:relative;
+        top: 50px;
+    }
+    
+    .hdiv{
+    	text-align:center;
+    	margin: 0 auto;
+    	width: 460px;
+    	margin-bottom: 50px;
+    }    
+    h1{
+    	font-size: 50px;
+    	border-bottom: 2px solid silver;
+    }
+    #lineh1{
+    	border-bottom: 8px solid rgba(120,120,120,0.2);
+    	margin-bottom: 50px;
+    	margin-top: 50px;
+    }
+    .thclass{
+    	background: rgba(118,167,247,0.8);
+    	border-radius: 5px;
+    	height: 50px;
+    	width: 200px;
+    }
+    #optiontable{
+    	width : 1110px;
+    	border-bottom: 1px solid silver;
+    	border-top: 1px solid silver;
+    }
+    .optionclass{
+    	cursor:pointer;
+    	height: 50px;
+    	width: 150px;
+    	color: gray;
+    	font-size: 20px;
+    }
+    #tablediv{
+    	margin: 0 auto;
+    	width: 1150px;
+    }
+ 	.divclass{
+ 		width : 800px;
+		margin: 0 auto;
+	}
+	#imgdiv{
+		margin-left : 30px;
+		margin-top : 30px;
+		margin-bottom : 30px;
+		text-align:center;
+		display: inline-block;
+	}
+	#rightdiv{
+		position:relative;
+		top:-70px;
+		margin-left: 80px;
+		display: inline-block;
+	}
+	#btn{
+		position:relative;
+		left: 200px;
+		top: 50px;
+		width: 200px;
+		height: 50px;
+		border-radius: 30px;
+		background: rgba(118,167,247,0.8);
+		color: white;
+		font-size: 20px;
+		font-weight: bold;
+		cursor: pointer;
+	}
+
+    .active{
+	background: #0000fe;
+	color: #fff;
+    border-radius: 10px;
+	}
+
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+	function setSelectedActive(){
+
+
+		console.log("-----------------");
+		var value2 = localStorage.getItem('value');
+		console.log(value2);
+	}
+
+	$(function(){
+
+        $('.optionclass').click(function(){    
+		var v = $(this).text();
+
+		// $('.optionclass:th:nth-child(' + 5 + ')').css({
+        // 'background':'#0000fe','border-radius': '10px'});
+		
+		// localStorage.setItem('$(this).text()', '.optionclass active');
+		// var v2 = localStorage.getItem('$(this).text()');
+		// var v2 = localStorage.getItem('.optionclass active');
+		// console.log(v2);
+
+		// var test = document.getElementsByClassName('.optionclass').addClass("active");
+		// console.log(test);
+		
+		// makeArr(arr, v);
+		// console.log(arr);
+		//console.log(localStorage);
+		
+        if($(this).hasClass("active")){
+            $(this).removeClass("active");
+        }else{
+			$(this).addClass("active");
+			var value = $(this).attr('id');
+			console.log(value);
+			localStorage.setItem('id','#'+value);
+			console.log(localStorage.getItem('id'));
+
+			// var t2 = document.querySelectorAll('.active');
+			// const t2String = JSON.stringify(t2)
+			// console.log(t2String)
+			// localStorage.setItem('value',t2);
+			// const result = localStorage.getItem("value");
+			// console.log(result);	
+        }
+
+		
+
+
+
+    //     var test = $(this).text();
+    
+    //     for(var i = 0; i<brandname.length;i++){
+    //         if(test!==brandname[i].innerText){
+    //             $('.brand:eq('+i+')').toggle();
+    //         }
+    //     }
+
+    });
+
+	// // 클릭한 값을 배열에 담는 함수
+	// function makeArr(array, val) {
+    //      var chk = array.indexOf(val);
+    //      if (chk==-1){ 
+    //           array.push(val); // 값이 없다면 배열의 마지막에 추가
+    //      }else{ 
+    //           array.splice(chk, 1); //삭제하고
+    //           array.push(val); // 마지막에 추가한다.
+    //      }
+    // }
+
+
+    // // 요소 내용을 배열로 만드는 함수
+    // function elemArr(arr) {
+    //         var arrObj = [];
+    //         for (var i = 0; i < arr.length; i++) {
+    //         arrObj.push(arr[i].innerText);
+    //     }
+    //     return arrObj;
+    // }
+
+    // // 변수 선언
+    // // toArray() : jQuery 를 포함하는 모든 요소를 검색하여 배열로 만들기.
+    // var brandname = $(".brand").toArray(); 
+    // // 요소를 배열로 변환
+    // console.log(brandname);
+    // // 요소 내용을 배열로 변환 
+    // var brandnamearr = elemArr(brandname);
+    // console.log(brandnamearr);
+
+})
+
+// 윈도우 창이 열렸을 떄
+window.onload = function () {
+	
+	setDefaultActive()
+	
+	setSelectedActive();
+	
+}
+
+// 디폴트 값 
+var setDefaultActive = function() {
+    // var element = $(".optionclass");
+    // element.addClass("active");
+	var element = $("#energy");
+	element.addClass("active");
+	var element2 = $("#brand");
+	element2.addClass("active");
+	var element3 = $("#door");
+	element3.addClass("active");
+	var element4 = $("#price");
+	element4.addClass("active");
+	var element5 = $("#volume");
+	element5.addClass("active");
+}
+
+
+
+
+
+
+
+
+</script>
+</head>
+<body>
+<div class="whole">
+	
+	<div id="container">
+		
+	<div class="hdiv">
+		<h1>제품탐색</h1>
+	</div>
+		<div id="tablediv">
+			<table id="optiontable">
+				<tr class="option">
+					<th class="thclass">에너지소비효율등급</th>
+					<th class="optionclass total" id="energy" name ="energyreset">전체</th>
+					<th class="optionclass" id="energy1" name ="1">1등급</th>
+					<th class="optionclass" id="energy2" name ="2">2등급</th>
+					<th class="optionclass" id="energy3" name ="3">3등급</th>
+					<th class="optionclass" id="energy4" name ="4">4등급</th>
+					<th class="optionclass" id="energy5" name ="5">5등급</th>
+					<th class="optionclass" id="energy6" name ="0">비대상제품</th>
+				</tr>
+				<tr class="option">
+					<th class="thclass">브랜드</th>
+					<th class="optionclass total" id="brand" name ="brandreset">전체</th>
+					<th class="optionclass" id="brand1" name ="'SAMSUNG'">삼성전자</th>
+					<th class="optionclass" id="brand2" name ="'LG'">LG</th>
+					<th class="optionclass" id="brand3" name ="'CARRIER'">캐리어</th>
+					<th class="optionclass" id="brand4" name = "'HAIER'">HAIER</th>
+					<th class="optionclass" id="brand5" name = "'CHANGHONG'">CHANGHONG</th>
+				</tr>
+				<tr class="option">
+					<th class="thclass">도어</th>
+					<th class="optionclass total" id="door" name ="doorreset">전체</th>
+					<th class="optionclass" id="door1" name ="1개">1개</th>
+					<th class="optionclass" id="door2" name ="2개">2개</th>
+					<th class="optionclass" id="door3" name ="3개">3개</th>
+					<th class="optionclass" id="door4" name ="4개">4개</th>
+				</tr>
+				<tr class="option">
+					<th class="thclass">가격</th>
+					<th class="optionclass total"  id="price" name = "pricereset">전체</th>
+					<th class="optionclass"  id="price1" name = "'PE'">~100만원</th>
+					<th class="optionclass"  id="price2" name = "'PD'">101~150만원</th>
+					<th class="optionclass"  id="price3" name = "'PC'">151~200만원</th>
+					<th class="optionclass"  id="price4" name = "'PB'">201~300만원</th>
+					<th class="optionclass"  id="price5" name = "'PA'">300만원이상</th>
+				</tr>
+				<tr class="option">
+					<th class="thclass">용량</th>
+					<th class="optionclass total" id="volume" name = "volumereset">전체</th>
+					<th class="optionclass" id="volume1" name = "'VF'">100~200ℓ</th>
+					<th class="optionclass" id="volume2" name = "'VE'">201~300ℓ</th>
+					<th class="optionclass" id="volume3" name = "'VD'">301~400ℓ</th>
+					<th class="optionclass" id="volume4" name = "'VC'">401~500ℓ</th>
+					<th class="optionclass" id="volume5" name = "'VB'">501~600ℓ</th>
+					<th class="optionclass" id="volume6" name = "'VA'">601ℓ~</th>
+				</tr>
+			</table>
+		</div>
+		<h1 id="lineh1"></h1>
+		
+	</div>
+</div>
+    
+</body>
+</html>
